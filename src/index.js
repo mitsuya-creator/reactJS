@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Person from './components/person';
 
-const myFirstElement = <h1>Hello Mitsuya</h1>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(myFirstElement);
+root.render(<Person name='Draken' age='24' />);
