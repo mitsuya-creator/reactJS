@@ -5,4 +5,4 @@ import MountingComponents from './components/Mounting';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MountingComponents />);
+root.render(<MountingComponents favCol='blueSky' />);

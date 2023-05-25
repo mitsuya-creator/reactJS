@@ -7,6 +7,9 @@ class MountingComponents extends React.Component {
             favoriteColor: 'gray'
         }
     }
+    static getDerivedStateFromProps(props, state) {
+        return { favoriteColor: props.favCol }
+    }
     render() {
         return (
             <h1>My favorit color is {this.state.favoriteColor} </h1>
