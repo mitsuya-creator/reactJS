@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import FormLogin from './components/Form'
+import MountingComponents from './components/Mounting';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<FormLogin />);
+root.render(<MountingComponents />);
