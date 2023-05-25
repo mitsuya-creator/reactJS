@@ -1,37 +1,43 @@
 import { toBeRequired } from "@testing-library/jest-dom/matchers";
 import React from "react";
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/style.css'
+
 
 class Person extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            name: 'Mitsuya',
-            age: 22,
-            edu: 'High School',
-            colorFav: 'gray'
+            show: true
         }
     }
-    changeName = () => {
-        this.setState({
-            name: 'Draken',
-            age: 19,
-            edu: 'High School',
-            colorFav: 'blue'
-        });
+    delContructor = () => {
+        return this.setState({
+            show: false
+        })
     }
     render() {
+        let header;
+        if (this.state.show) {
+            header = <AlertDel />
+        }
         return (
             <div>
-                <h1>Introduction</h1>
-                <p>
-                    Hello My name is {this.state.name},
-                    my old {this.state.age},
-                    i have studied at {this.state.edu},
-                    my color favorite is {this.state.colorFav} because the world in {this.state.colorFav == 'gray' ? 'grayscasle Now' : 'the blue is sky'}.
-                </p>
-                <button type='button' onClick={this.changeName}>Draken</button>
+                {header}
+                <Button onClick={this.delContructor} variant='dark'>Draken</Button>
             </div>
         )
     }
 }
+
+class AlertDel extends React.Component {
+    componentWillUnmount() {
+        alert('Componen Hello will be remove');
+    }
+    render() {
+        return <h1>Hello</h1>
+    }
+}
+
 export default Person;

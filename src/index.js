@@ -4,4 +4,4 @@ import Person from './components/person';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Person name='Draken' age='24' />);
+root.render(<Person favCol='red' />);
