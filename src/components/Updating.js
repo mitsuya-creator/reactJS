@@ -9,8 +9,11 @@ class UpdatingComponents extends React.Component {
             favcol: 'gray'
         }
     }
-    shouldComponentUpdate() {
-        return true;
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        document.getElementById('before').innerHTML = `components before update ${prevState.favcol}`;
+    }
+    componentDidUpdate() {
+        document.getElementById('after').innerHTML = `components after update ${this.state.favcol}`;
     }
     changeColor = () => {
         this.setState({ favcol: 'blue' })
@@ -20,6 +23,8 @@ class UpdatingComponents extends React.Component {
             <>
                 <h1>Upating Components</h1>
                 <h3>My color Favorite is {this.state.favcol}</h3>
+                <h3 id='before'></h3>
+                <h3 id='after'></h3>
                 <Button variant='dark' onClick={this.changeColor}>changeColor</Button>
             </>
         )
