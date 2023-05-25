@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Person from './components/person';
+import FormLogin from './components/Form'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Person favCol='red' />);
+root.render(<FormLogin />);
