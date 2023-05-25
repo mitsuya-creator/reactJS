@@ -9,8 +9,8 @@ class UpdatingComponents extends React.Component {
             favcol: 'gray'
         }
     }
-    static getDerivedStateFromProps(props, state) {
-        return { favcol: props.favoriteColor };
+    shouldComponentUpdate() {
+        return true;
     }
     changeColor = () => {
         this.setState({ favcol: 'blue' })
