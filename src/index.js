@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MountingComponents from './components/Mounting';
+import Unmounting from './components/Unmounting';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MountingComponents favCol='blueSky' />);
+root.render(<Unmounting />);
