@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Unmounting from './components/Unmounting';
-
+import {Model} from "./components/Props"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Unmounting />);
+root.render(<Model />);
