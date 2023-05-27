@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {Model} from "./components/Props"
+import {List} from "./components/List"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Model />);
+root.render(<List />);
