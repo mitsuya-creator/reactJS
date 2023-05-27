@@ -1,17 +1,15 @@
 import React from "react";
 
 function Car(props) {
-    return <h1>I am Car {props.model}</h1>
+    return <h1>I am Car {props.model.type}</h1>
 }
 
-class Model extends React.Component{
-     render(){
-     return (
-       <div>
-        <Car model="Mustang" />
-        <h1>type Sports</h1>
-       </div>
-       );
-     }
+function Model(){
+  const car = {name: "Mustang", type: "Sport"}
+  return (
+    <div>
+    <Car model={car} />
+    </div>
+    )
 }
 export {Car, Model};
