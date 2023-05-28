@@ -1,27 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { useState } from 'react';
+import Todos from './components/Memo';
 
-import Layout from './pages/Layout';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
-import About from './pages/About';
-import NoPages from './pages/NoPages';
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
 
-export default function App(){
+  const increment = () => setCount((e) => e + 1);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="*" element={<NoPages />}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    
-    )
+    <>
+      <Todos todos={todos} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
