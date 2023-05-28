@@ -5,9 +5,7 @@ function MultInput() {
     const [inputs, setInput] = useState({});
     const handleChange = (event) => {
         const name = event.target.name;
-        console.log(name);
         const value = event.target.value
-        console.log(value);
         setInput((values) => ({ ...values, [name]: value }))
     }
     const handleSubmit = (event) => {
