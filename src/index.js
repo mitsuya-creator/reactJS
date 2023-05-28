@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import MultInput from './components/MultInput';
+import MhsSelected from './components/Selected';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MultInput />);
+root.render(<MhsSelected />);
