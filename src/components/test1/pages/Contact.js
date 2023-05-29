@@ -15,7 +15,7 @@ function ContactMe() {
         console.log(input);
     }
     return (
-        <div className="contact-me ms-5">
+        <div className="contact-me ms-2">
             <h1 className="mt-3">Contact Me</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">

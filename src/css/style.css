@@ -1,4 +1,15 @@
+.brand {
+  margin-left: -1px;
+}
+
 .contact-me {
   width: 500px;
+}
 
+.nav:hover {
+  color: white;
+}
+
+.nav {
+  color: #777;
 }
