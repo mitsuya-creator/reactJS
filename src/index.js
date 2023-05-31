@@ -7,21 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function App(){
   return (
     <>
-      <Profile person={{
-        imgUrl: AEU,
-        title: "As Everything Unfolds",
-        description: "Band Heavy Metal From England"
-      }}/>
-      <Profile person={{
-        imgUrl: AEU,
-        title: "As Everything Unfolds",
-        description: "Band Heavy Metal From England"
-      }}/>
-      <Profile person={{
-        imgUrl: AEU,
-        title: "As Everything Unfolds",
-        description: "Band Heavy Metal From England"
-      }}/>
+      <Profile>
+        <img src={AEU} width="50px" height="50px"/>
+      </Profile>
     </>
     )
 }
