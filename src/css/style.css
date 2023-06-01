@@ -13,3 +13,17 @@
 .nav {
   color: #777;
 }
+
+.card {
+  display: flex;
+  align-items: center;
+}
+
+.card li {
+  list-style: none;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+}
