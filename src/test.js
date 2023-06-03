@@ -1,34 +1,28 @@
-export default function Form() {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+import { useState } from 'react';
 
-    function handleFirstNameChange() {
-        setFirstName(e => e.target.value);
-    }
-
-    function handleLastNameChange() {
-        setLastName(e => e.target.value);
-    }
-
-    function handleReset() {
-        setFirstName("");
-        setLastName("");
+export default function RequestTracker() {
+    const [pending, setPending] = useState(0);
+    const [completed, setCompleted] = useState(0);
+    function handleClick() {
+        setPending(pending => pending + 1);
+        setTimeout(() => {
+            setPending(pending => pending - 1);
+            setCompleted(completed => completed + 1);
+        }, 3000);
     }
 
     return (
-        <form onSubmit={e => e.preventDefault()}>
-            <input
-                placeholder="First name"
-                value={firstName}
-                onChange={handleFirstNameChange}
-            />
-            <input
-                placeholder="Last name"
-                value={lastName}
-                onChange={handleLastNameChange}
-            />
-            <h1>Hi, {firstName} {lastName}</h1>
-            <button onClick={handleReset}>Reset</button>
-        </form>
+        <>
+            <h3>
+                Pending: {pending}
+            </h3>
+            <h3>
+                Completed: {completed}
+            </h3>
+            <button onClick={handleClick}>
+                Buy
+            </button>
+        </>
     );
 }
+
