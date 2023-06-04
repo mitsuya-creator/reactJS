@@ -1,6 +1,3 @@
-import React from "react";
-
-
 function getFinalState(baseState, queue) {
     let finalState = baseState;
     let x;
