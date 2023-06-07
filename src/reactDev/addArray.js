@@ -1,19 +1,18 @@
 import React from "react";
-import {useState} from "react";
+import { useState } from "react";
 
-let index= 0;
-export default function AddArtist(){
-  const [name,SetName] = useState("");
-  const [artist,SetArtist] = useState([]);
-  let del;
+let index = 0;
+export default function AddArtist() {
+  const [name, SetName] = useState("");
+  const [artist, SetArtist] = useState([]);
   return (
     <>
       <label>Name <input type="text" onChange={(e) => SetName(e.target.value)
-      }/>
+      } />
       </label>
       <button type="button" onClick={() => {
-        SetArtist([...artist,{id:index++, name: name}]);
-        }
+        SetArtist([...artist, { id: index++, name: name }]);
+      }
       }>Add</button>
       <button type="button" onClick={() => {
         const reverseList = [...artist];
@@ -21,19 +20,23 @@ export default function AddArtist(){
         console.log('reverse', reverseList);
         SetArtist(reverseList);
       }}>Reverse</button>
-      <button type="button" onClick={()=> {
+      <button type="button" onClick={() => {
         const sortList = [...artist];
-        sortList.sort((a,b) => a.name > b.name ? 1 : -1);
-        console.log('sort', sortList);
+        sortList.sort((a, b) => a.name > b.name ? 1 : -1);
         SetArtist(sortList);
       }
-      }>Sort</button>
+      }>Sort A-Z</button>
+      <button type="button" onClick={() => {
+        const sortList = [...artist];
+        sortList.sort((a, b) => a.name > b.name ? -1 : 1);
+        SetArtist(sortList);
+      }}>Sort Z-A</button>
       <ul>
-      {artist.map(index => <li key={index.id}>{index.name}      <button type="button" onClick={() => {
-        SetArtist(artist.filter(a => a.id !== index.id));
+        {artist.map(index => <li key={index.id}>{index.name}      <button type="button" onClick={() => {
+          SetArtist(artist.filter(a => a.id !== index.id));
         }
-      } >Delete</button></li>)}
+        } >Delete</button></li>)}
       </ul>
     </>
-    )
+  )
 }
