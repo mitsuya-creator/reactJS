@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AddList from './reactDev/todoList';
+import ShoppingCart from './test';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AddList />)
+root.render(<ShoppingCart />)
