@@ -33,8 +33,11 @@ function List({todos,onDeleted,onChange}){
   }
   return (
     <>
+      <input type="checkbox" checked={todos.done} onChange ={(e) => {
+        onChange({...todos, done: e.target.checked})
+      }} />
       {listContent}
-      <button onClick={() => onDeleted(todos.id)}>Delete</button>
+     <button onClick={() => onDeleted(todos.id)}>Delete</button>
     </>
     )
 }
