@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { useState } from 'react';
 import AddTodo from './reactDev/AddTodo';
 import TaskList from './reactDev/TaskList';
-import ResetCheckbox from './reactDev/resetCheckbox';
 
 
 let id = 0;
@@ -26,10 +25,16 @@ export default function App() {
       }
     }))
   }
+  const handleResetBtn = () => {
+    setList(list.map(t => {
+      if (t.done) return { ...t, done: false }
+      return t;
+    }));
+  }
   return (
     <>
       <AddTodo onAddTodo={handleAddBtn} />
-      {reset = list.map(t => t.done ? true : undefined)}{reset.some(a => a === true) && <ResetCheckbox />}
+      {reset = list.map(t => t.done ? true : undefined)}{reset.some(a => a === true) && <button type='button' onClick={() => handleResetBtn()}>Reset</button>}
       <TaskList todos={list} onDeleted={handleDeleteBtn} onChange={handleOnChangeList} />
       {console.log(list)}
     </>
