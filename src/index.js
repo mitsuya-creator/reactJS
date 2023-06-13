@@ -1,44 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState } from 'react';
-import AddTodo from './reactDev/AddTodo';
-import TaskList from './reactDev/TaskList';
-
-
-let id = 0;
-let reset = false;
+import Form from './reactDev/form';
 
 export default function App() {
-  const [list, setList] = useState([]);
-  const handleAddBtn = title => {
-    setList([...list, { id: id++, title: title, done: false }])
-  }
-  const handleDeleteBtn = id => {
-    setList(list.filter(idList => idList.id !== id))
-  }
-  const handleOnChangeList = todo => {
-    setList(list.map(t => {
-      if (t.id === todo.id) {
-        return todo;
-      } else {
-        return t;
-      }
-    }))
-  }
-  const handleResetBtn = () => {
-    setList(list.map(t => {
-      if (t.done) return { ...t, done: false }
-      return t;
-    }));
-  }
+  const statuses = [
+    "empty", // disable button submit
+    "submitting", // form completely disable, spinner shown
+    "error", // enakble button submit ,with extra error mssg
+    "success", // "Thank you" messsage instead of form
+    "typing" // enable submit button
+  ]
   return (
-    <>
-      <AddTodo onAddTodo={handleAddBtn} />
-      {reset = list.map(t => t.done ? true : undefined)}{reset.some(a => a === true) && <button type='button' onClick={() => handleResetBtn()}>Reset</button>}
-      <TaskList todos={list} onDeleted={handleDeleteBtn} onChange={handleOnChangeList} />
-      {console.log(list)}
-    </>
-  )
+      <>
+        {statuses.map(stats => {
+          return (<section key={stats}>
+          <h1>{stats}</h1>
+          <Form status={stats}/>
+          </section>)
+        })}
+      </>
+    )
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
