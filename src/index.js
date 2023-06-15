@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Img from './test';
+import Profile from './reactDev/Profile';
 
 export default function App() {
   return (
     <>
-      <Img />
+      <Profile />
     </>
   )
 }
