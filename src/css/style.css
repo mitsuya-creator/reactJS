@@ -27,3 +27,17 @@
   width: 200px;
   height: 200px;
 }
+
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-purple {
+  background-color: purple;
+}
+
+.border-purple {
+  border: 10px solid purple;
+}

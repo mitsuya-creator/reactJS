@@ -1,68 +1,25 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
+import MitsuyaImg from "./assets/Mitsuya.jpeg";
+import "./css/style.css"
 
-const initialProducts = [{
-  id: 0,
-  name: 'Baklava',
-  count: 1,
-}, {
-  id: 1,
-  name: 'Cheese',
-  count: 5,
-}, {
-  id: 2,
-  name: 'Spaghetti',
-  count: 2,
-}];
-
-export default function ShoppingCart() {
-  const [
-    products,
-    setProducts
-  ] = useState(initialProducts)
-
-  function handleIncreaseClick(productId) {
-    setProducts(products.map(product => {
-      if (product.id === productId) {
-        return {
-          ...product,
-          count: product.count + 1
-        };
-      } else {
-        return product;
-      }
-    }))
+export default function Img() {
+  const [active, setActive] = useState(false);
+  let bgClass;
+  if (active) {
+    bgClass = "div bg-purple";
+  } else {
+    bgClass = "div";
   }
-  function handleDecrease(productS){
-      let nextProduct = products.map(product => {
-        if(product.id === productS.id){
-          return {...product, count: product.count - 1};
-        }else{
-          return product;
-        }
-      });
-      nextProduct = nextProduct.filter(product => product.count > 0);
-      setProducts(nextProduct);
+  const handleDivClick = () => {
+    setActive(true);
   }
-
   return (
-    <ul>
-      {products.map(product => (
-        <li key={product.id}>
-          {product.name}
-          {' '}
-          (<b>{product.count}</b>)
-          <button onClick={() => {
-            handleIncreaseClick(product.id);
-          }}>
-            +
-          </button>
-          <button onClick={() => handleDecrease(product)}>
-            –
-          </button>
-        </li>
-      ))}
-      {console.log(products)}
-    </ul>
-  );
+    <div style={{ width: "500px", height: "500px" }} className={bgClass} onClick={handleDivClick}>
+      <img src={MitsuyaImg} width={250} height={250} alt="profile-mitsuya" className="border-purple" onClick={(e) => {
+        e.stopPropagation();
+        setActive(false)
+      }} />
+    </div>
+  )
 }
