@@ -1,25 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { useState } from 'react';
 import Form from './reactDev/form';
 
 export default function App() {
-  const statuses = [
-    "empty", // disable button submit
-    "submitting", // form completely disable, spinner shown
-    "error", // enakble button submit ,with extra error mssg
-    "success", // "Thank you" messsage instead of form
-    "typing" // enable submit button
-  ]
+  const [answer, setAnswer] = useState("");
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState("typing");
   return (
-      <>
-        {statuses.map(stats => {
-          return (<section key={stats}>
-          <h1>{stats}</h1>
-          <Form status={stats}/>
-          </section>)
-        })}
-      </>
-    )
+    <>
+      <Form setStat={setStatus} status={status} setAns={setAnswer} ans={answer} error={error} setEr={setError} />
+    </>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
