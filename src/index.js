@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import IssuedTo from './reactDev/redundant';
+import ListSnack from './reactDev/travelSnack';
 
 
 export default function App() {
   return (
     <>
-      <IssuedTo />
+      <ListSnack />
     </>
   )
 }
