@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Profile from './reactDev/Profile';
+import Feedback from './reactDev/Feedback';
 
 export default function App() {
   return (
     <>
-      <Profile />
+      <Feedback />
     </>
   )
 }
