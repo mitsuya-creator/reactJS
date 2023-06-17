@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ListSnack from './reactDev/travelSnack';
-
+import Clock from './reactDev/Clock';
 
 export default function App() {
   return (
     <>
-      <ListSnack />
+      <Clock />
     </>
   )
 }
