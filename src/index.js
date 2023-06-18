@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Clock from './reactDev/Clock';
+import AddPacket from './reactDev/addPacket';
 
 export default function App() {
   return (
     <>
-      <Clock />
+      <AddPacket />
     </>
   )
 }
