@@ -20,6 +20,8 @@ export default function ListPacket({ packet, setPacket }) {
         </li>
         )}
       </ul>
+      <hr />
+      {packet.length > 0 && <b>x out of {packet.length}</b>}
       {console.log(packet)}
     </>
   )
