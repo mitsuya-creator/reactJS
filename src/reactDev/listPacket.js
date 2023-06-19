@@ -1,6 +1,6 @@
 import React from "react";
-
 export default function ListPacket({ packet, setPacket }) {
+  const packed = packet.filter(items => items.packed === true);
   const handleOnChange = (item, e) => {
     setPacket(packet.map(id => {
       if (id.id === item.id) {
@@ -9,20 +9,20 @@ export default function ListPacket({ packet, setPacket }) {
         return { ...id };
       }
     }));
+  
   }
   return (
     <>
       <ul>
         {packet.map(item => <li key={item.id}>
-          <input type="checkbox" checked={item.packed} onChange={(e) => handleOnChange(item, e)} />
+          <input type="checkbox" checked={item.packed} onChange={(e) => handleOnChange(item, e)}/>
           {item.title}
           <button type="button" onClick={() => setPacket(packet.filter(id => item.id !== id.id))}>Delete</button>
         </li>
         )}
       </ul>
       <hr />
-      {packet.length > 0 && <b>x out of {packet.length}</b>}
-      {console.log(packet)}
+      {packet.length > 0 && <b>{packed.length} out of {packet.length} packed!</b>}
     </>
   )
 }
