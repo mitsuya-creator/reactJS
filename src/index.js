@@ -9,6 +9,8 @@ export default function App() {
   return (
     <>
       <AddLetter letter={letters} setLetter={setLetter} />
+      <Letter letters={letters} setLetters={setLetter} />
+      {console.log(letters)}
     </>
   )
 }

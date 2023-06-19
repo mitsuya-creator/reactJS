@@ -1,13 +1,22 @@
 import React from "react";
+import "../css/style.css";
 
-export default function Letter({ letters }) {
+export default function Letter({ letters, setLetters }) {
     return (
         <>
-            {letters.map(letter => <li key={letter.id}>
-                <button type="button">{letter.isStarred ? "Unstar" : "Star"}</button>
-                {letter.title}
-            </li>
-            )}
+            <ul>
+                {letters.map(letter => <li key={letter.id} className="hover-skyblue li-h">
+                    <button type="button" onClick={() => setLetters(letters.map(l => {
+                        if (l.id === letter.id) {
+                            return { ...letter, isStarred: !letter.isStarred }
+                        } else {
+                            return l;
+                        }
+                    }))}>{letter.isStarred ? "Unstar" : "Star"}</button>
+                    {letter.subject}
+                </li>
+                )}
+            </ul>
         </>
     )
 }

@@ -41,3 +41,12 @@
 .border-purple {
   border: 10px solid purple;
 }
+
+.hover-skyblue:hover {
+  background-color: skyblue;
+}
+
+.li-h {
+  height: 25px;
+  padding: 5px;
+}
