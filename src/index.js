@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AddPacket from './reactDev/addPacket';
-import ListPacket from './reactDev/listPacket'
-import {useState} from 'react';
+import AddLetter from './reactDev/addLetter';
+import Letter from './reactDev/letter';
+import { useState } from 'react';
 
 export default function App() {
-  const [packet,setPacket] = useState([]);
+  const [letters, setLetter] = useState([]);
   return (
     <>
-      <AddPacket addPacket={packet} setPacket={setPacket} />
-      <ListPacket packet={packet} setPacket={setPacket} />
+      <AddLetter letter={letters} setLetter={setLetter} />
     </>
   )
 }
