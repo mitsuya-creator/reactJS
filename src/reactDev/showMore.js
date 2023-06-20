@@ -10,6 +10,8 @@ export default function Accordion() {
                 test
             </Panel>
             <Panel title="History" isActive={activeIndex === 1} onShow={() => setActiveIndex(1)} children="..." />
+            <Panel title="thirsd" isActive={activeIndex === 2} onShow={() => setActiveIndex(2)} children="..." />
+
 
         </>
     )
