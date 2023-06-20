@@ -5,14 +5,16 @@ export default function Letter({ letters, setLetters }) {
     return (
         <>
             <ul>
-                {letters.map(letter => <li key={letter.id} className="hover-skyblue li-h">
-                    <button type="button" onClick={() => setLetters(letters.map(l => {
-                        if (l.id === letter.id) {
-                            return { ...letter, isStarred: !letter.isStarred }
-                        } else {
-                            return l;
-                        }
-                    }))}>{letter.isStarred ? "Unstar" : "Star"}</button>
+                {letters.map(letter => <li key={letter.id} className={letter.isStarred ? "bg-skyblue li-h" : "li-h"}>
+                    <input type="checkbox" checked={letter.isStarred} onChange={e => {
+                        setLetters(letters.map(l => {
+                            if (l.id === letter.id) {
+                                return { ...letter, isStarred: e.target.checked }
+                            } else {
+                                return l;
+                            }
+                        }))
+                    }} />
                     {letter.subject}
                 </li>
                 )}
