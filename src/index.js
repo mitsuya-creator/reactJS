@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Accordion from './reactDev/showMore';
+import SyncInput from './reactDev/syncInput';
 
 export default function App() {
   return (
     <>
-      <Accordion />
+      <SyncInput />
     </>
   )
 }
