@@ -26,10 +26,10 @@ function ListMhs({ items, query }) {
     <table>
       <tbody>
         {items.map(content => <tr key={content.id}>
-          <td>{content.name
+          <td>{content.name.split("").map((character, idx) => character === query.toUpperCase() || character === query ? <span key={idx} style={{ color: "red" }}>{character}</span> : <span key={idx}>{character}</span>
+          )
             // .forEach(character => character === query ? <span style={{ color: "red" }}>{character}</span> : { character })
-          }
-          </td>
+          }</td>
           <td>{content.quote}</td>
         </tr>
         )}
