@@ -8,16 +8,13 @@ import mhs from './reactDev/data';
 export default function App() {
   const [keyword, setKeyword] = useState("");
   const result = filterItems(mhs, keyword);
-  result.map(item => item.name.split())
   return (
     <>
       <SearchBar
         word={keyword}
         setWord={setKeyword}
       />
-      {/* {console.log(keyword)} */}
       <ListMhs items={result} query={keyword} />
-      {/* {console.log(result)} */}
     </>
   )
 }
@@ -26,10 +23,8 @@ function ListMhs({ items, query }) {
     <table>
       <tbody>
         {items.map(content => <tr key={content.id}>
-          <td>{content.name.split()
-            // .map((character, idx) => character === query.toUpperCase() || character === query ? <span key={idx} style={{ color: "red" }}>{character}</span> : <span key={idx}>{character}</span>
-            // )
-            // .forEach(character => character === query ? <span style={{ color: "red" }}>{character}</span> : { character })
+          <td>{content.name.split("")
+            .map((character, index) => query.includes(character.toLowerCase()) || query.includes(character.toUpperCase()) ? <span key={index} style={{ color: "red" }}>{character}</span> : <span key={index}>{character}</span>)
           }</td>
           <td>{content.quote}</td>
         </tr>
