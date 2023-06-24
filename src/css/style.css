@@ -26,12 +26,18 @@
   border: 1px black solid;
 }
 
-h1,
-button {
+h1 {
   margin: 5px auto;
   display: flex;
   align-items: center;
 
+}
+
+.btn-contact {
+  width: max-content;
+  height: 50px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .card li {
@@ -68,4 +74,16 @@ button {
 .li-h {
   height: 25px;
   padding: 5px;
+}
+
+
+.ul-inline {
+  list-style: none;
+  display: flex;
+  justify-content: start;
+  margin: 10px;
+}
+
+.li {
+  margin: 0 10px;
 }

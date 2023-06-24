@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import SwapField from './reactDev/swapElement';
+import initialContact from './reactDev/contactData';
+import ContactList from './reactDev/contactList';
 
 export default function App() {
   return (
     <>
-      <SwapField />
+      <ContactList contacts={initialContact} />
     </>
   )
 }
