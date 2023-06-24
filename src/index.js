@@ -1,37 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState } from 'react';
-import SearchBar from './reactDev/searchBar';
-import filterItems from './reactDev/filterItems';
-import mhs from './reactDev/data';
+import TextField from './reactDev/hint';
 
 export default function App() {
-  const [keyword, setKeyword] = useState("");
-  const result = filterItems(mhs, keyword);
   return (
     <>
-      <SearchBar
-        word={keyword}
-        setWord={setKeyword}
-      />
-      <ListMhs items={result} query={keyword} />
+      <TextField />
     </>
-  )
-}
-function ListMhs({ items, query }) {
-  return (
-    <table>
-      <tbody>
-        {items.map(content => <tr key={content.id}>
-          <td>{content.name.split("")
-            .map((character, index) => query.includes(character.toLowerCase()) || query.includes(character.toUpperCase()) ? <span key={index} style={{ color: "red" }}>{character}</span> : <span key={index}>{character}</span>)
-          }</td>
-          <td>{content.quote}</td>
-        </tr>
-        )}
-      </tbody>
-    </table>
-  )
+    )
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
