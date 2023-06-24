@@ -1,36 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Counter from './reactDev/counter';
 import { useState } from 'react';
-import SearchBar from './reactDev/searchBar';
-import filterItems from './reactDev/filterItems';
-import mhs from './reactDev/data';
 
 export default function App() {
-  const [keyword, setKeyword] = useState("");
-  const result = filterItems(mhs, keyword);
+  const [show, setShow] = useState(false);
   return (
     <>
-      <SearchBar
-        word={keyword}
-        setWord={setKeyword}
-      />
-      <ListMhs items={result} query={keyword} />
+      <Counter />
+      {show ? <Counter /> : null}
+      <input type='checkbox' checked={show} onChange={e => setShow(e.target.checked)} />
+      <span>Show second counter</span>
     </>
-  )
-}
-function ListMhs({ items, query }) {
-  return (
-    <table>
-      <tbody>
-        {items.map(content => <tr key={content.id}>
-          <td>{content.name.split("")
-            .map((character, index) => query.includes(character.toLowerCase()) || query.includes(character.toUpperCase()) ? <span key={index} style={{ color: "red" }}>{character}</span> : <span key={index}>{character}</span>)
-          }</td>
-          <td>{content.quote}</td>
-        </tr>
-        )}
-      </tbody>
-    </table>
   )
 }
 

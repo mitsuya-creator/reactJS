@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .brand {
   margin-left: -1px;
 }
@@ -15,8 +20,18 @@
 }
 
 .card {
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+}
+
+h1,
+button {
+  margin: 5px auto;
   display: flex;
   align-items: center;
+
 }
 
 .card li {
