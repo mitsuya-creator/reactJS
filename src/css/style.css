@@ -40,6 +40,28 @@ h1 {
   cursor: pointer;
 }
 
+.btn {
+  width: max-content;
+  padding: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* form {
+  box-sizing: border-box;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+} */
+input {
+  height: 20px;
+}
+
+.mx-2 {
+  margin: 2px;
+}
+
 .card li {
   list-style: none;
 }

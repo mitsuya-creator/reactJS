@@ -5,4 +5,4 @@ const initialContact = [
 ]
 
 
-export default initialContact;
+export default initialContact;  
