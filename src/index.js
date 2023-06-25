@@ -19,7 +19,10 @@ export default function App() {
         Show in Reverse order
       </label>
       <ul>
-        <ListContacts contacts={displayContacts} />
+        {displayContacts.map(contact =>
+          <ListContacts contact={contact} key={contact.id} />
+        )
+        }
       </ul>
     </>
   )
