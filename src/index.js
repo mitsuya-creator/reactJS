@@ -1,29 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import initialContact from './reactDev/contactData';
-import ListContacts from './reactDev/misplacedInList';
+import AddTasks from './reactDev/createTasks';
+import ListTask from './reactDev/listTasks';
 import { useState } from 'react';
 
+const initialTasks = [];
+
 export default function App() {
-  const [checkbox, setCheckBox] = useState(false);
-  const displayContacts = [...initialContact];
-  if (checkbox) {
-    displayContacts.reverse();
-  }
+  const [add, setAdd] = useState(initialTasks);
+  console.log(add);
   return (
     <>
-      <label>
-        <input type="checkbox" checked={checkbox} onChange={e => {
-          setCheckBox(e.target.checked);
-        }} />
-        Show in Reverse order
-      </label>
-      <ul>
-        {displayContacts.map(contact =>
-          <ListContacts contact={contact} key={contact.id} />
-        )
-        }
-      </ul>
+      <AddTasks setAdd={setAdd} />
+      <ListTask tasks={add} setTasks={setAdd} />
     </>
   )
 }
