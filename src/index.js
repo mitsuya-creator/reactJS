@@ -11,7 +11,7 @@ export default function App() {
   const [add, setAdd] = useState(initialTasks);
   return (
     <>
-      <AddTasks setAdd={setAdd} />
+      <AddTasks setAdd={setAdd} tasks={add} />
       <ListTask tasks={add} setTasks={setAdd} />
     </>
   )
