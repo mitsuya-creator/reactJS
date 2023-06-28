@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import AddTasks from './reactDev/createTasks';
 import ListTask from './reactDev/listTasks';
 import { useState } from 'react';
+import './css/style.css';
 
 const initialTasks = [];
 
