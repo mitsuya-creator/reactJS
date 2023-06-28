@@ -1,5 +1,6 @@
 import React from "react";
 import EditTask from "./editTasks";
+import deleteTask from "./deleteTasks";
 
 export default function ListTask({ tasks, setTasks }) {
     const handleChange = (t, event) => {
@@ -33,6 +34,7 @@ export default function ListTask({ tasks, setTasks }) {
                         <>
                             <span>{task.title}</span>
                             <button type="button" onClick={() => handleEditBtn(task)}>Edit</button>
+                            <button type="button" onClick={() => deleteTask(tasks, setTasks, task.id)}>Delete</button>
                         </>
                     }
                 </li>)}
