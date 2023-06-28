@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function AddTasks({ setAdd }) {
     const [text, setText] = useState("");
     const handleAddBtn = () => {
-        setAdd(newTask => [...newTask, { title: text, done: false, id: text }]);
+        setAdd(newTask => [...newTask, { title: text, done: false, id: text, isEdit: false }]);
         setText("");
     }
     const handleOnChange = e => {

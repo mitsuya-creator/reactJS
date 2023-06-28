@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function ListTask({ tasks, setTasks }) {
-    const [isEdit, setIsEdit] = useState(false);
     const handleChange = (t, event) => {
         let updateTasks = tasks.map(task => {
             if (task.id === t.id) {
@@ -12,16 +11,29 @@ export default function ListTask({ tasks, setTasks }) {
         })
         setTasks(updateTasks);
     }
-    console.log(isEdit)
+    const handleEditBtn = t => {
+        let updateTasks = tasks.map(task => {
+            if (task.id === t.id) {
+                return { ...t, isEdit: true }
+            } else {
+                return task;
+            }
+        })
+        setTasks(updateTasks);
+    }
+    console.log(tasks)
     return (
         <>
             <ul>
                 {tasks.map(task => <li key={task.id}>
-                    <input type="checkbox" onChange={e => handleChange(task, e)} checked={task.done} />{task.title}
-                    {isEdit ?
-                        <EditTask tasks={tasks} setTasks={setTasks} taskUpdate={task} setEdit={setIsEdit} /> : <button type="button" onClick={() => setIsEdit(!isEdit)}>Edit</button>
+                    <input type="checkbox" onChange={e => handleChange(task, e)} checked={task.done} />
+                    {task.isEdit ? <EditTask tasks={tasks} setTasks={setTasks} taskUpdate={task} key={task.id} id={task.id} />
+                        :
+                        <>
+                            <span>{task.title}</span>
+                            <button type="button" onClick={() => handleEditBtn(task)}>Edit</button>
+                        </>
                     }
-
                 </li>)}
             </ul>
         </>
@@ -29,23 +41,36 @@ export default function ListTask({ tasks, setTasks }) {
 }
 
 
-function EditTask({ tasks, setTasks, taskUpdate, setEdit }) {
+function EditTask({ tasks, setTasks, taskUpdate, id }) {
+    let value;
     const [text, setText] = useState("");
+    const [reset, setReset] = useState(false);
     const handleSave = id => {
         let updateTasks = tasks.map(task => {
-            if (tasks.id === id) {
-                return { ...taskUpdate, title: text }
+            if (task.id === id) {
+                console.log(id);
+                return { ...taskUpdate, title: text, id: text, isEdit: false }
             } else {
                 return task;
             }
         })
         setTasks(updateTasks);
-        setEdit(() => false);
+    }
+    if (reset) {
+        value = taskUpdate.title;
+    } else {
+        value = text;
     }
     return (
         <>
-            <input type="text" onChange={e => setText(e.target.value)} value={taskUpdate.title} />
-            <button type="button" onClick={handleSave(taskUpdate.id)}>Save</button>
+            <input type="text" onChange={e => setText(e.target.value)} value={value} disabled={
+                reset === true
+            } />
+            <button type="button" onClick={() => handleSave(id)}>Save</button>
+            <button type="button" onClick={() => {
+                setText("");
+                setReset(!reset);
+            }} disabled={value === ""}>{reset ? "Edit" : "Reset"}</button >
         </>
     )
 }

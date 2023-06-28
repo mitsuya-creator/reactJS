@@ -8,7 +8,6 @@ const initialTasks = [];
 
 export default function App() {
   const [add, setAdd] = useState(initialTasks);
-  console.log(add);
   return (
     <>
       <AddTasks setAdd={setAdd} />
