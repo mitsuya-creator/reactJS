@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function AddTasks({ onAddBTn, tasks, setText, text }) {
     const handleOnChange = e => {

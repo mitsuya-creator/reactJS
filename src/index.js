@@ -16,7 +16,8 @@ export default function App() {
       type: "add",
       id: text,
       title: text,
-      done: false
+      done: false,
+      isEdit: false
     })
     setText("");
   }
