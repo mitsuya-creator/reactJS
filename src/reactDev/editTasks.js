@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function EditTask({ tasks, setTasks, taskUpdate, id }) {
-    let value;
+    let toggle, length, index, value;
     const [text, setText] = useState("");
     const [reset, setReset] = useState(false);
     const handleSave = id => {
@@ -20,12 +20,25 @@ export default function EditTask({ tasks, setTasks, taskUpdate, id }) {
     } else {
         value = text;
     }
+    length = tasks.length;
+    tasks.map(task => {
+        if (task.id !== id) {
+            for (index = 0; index < length; index++) {
+                if (task.title === value) {
+                    toggle = true;
+                }
+            }
+        } else {
+            toggle = false;
+        }
+        return toggle;
+    });
     return (
         <>
             <input type="text" onChange={e => setText(e.target.value)} value={value} disabled={
                 reset === true
             } />
-            <button type="button" onClick={() => handleSave(id)} disabled={value === ""}>Save</button>
+            <button type="button" onClick={() => handleSave(id)} disabled={value === "" || toggle}>Save</button>
             <button type="button" onClick={() => {
                 setText("");
                 setReset(!reset);
