@@ -1,18 +1,13 @@
 import React from "react";
 
 export default function AddTasks({ onAddBTn, tasks, setText, text }) {
+    let toggle, newArr;
+    newArr = [];
+    tasks.map(task => newArr.push(task.title));
+    newArr.includes(text) ? toggle = true : toggle = false;
     const handleOnChange = e => {
         setText(e.target.value);
     }
-    let toggle;
-    tasks.map(task => {
-        if (task.title === text) {
-            toggle = true;
-        } else {
-            toggle = false;
-        }
-        return toggle;
-    });
     return (
         <>
             <input type="text" value={text} placeholder="Add Tasks" onChange={e => handleOnChange(e)} />
