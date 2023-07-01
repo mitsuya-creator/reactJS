@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-export default function AddTasks({ setAdd, tasks }) {
-    const [text, setText] = useState("");
-    const handleAddBtn = () => {
-        setAdd(newTask => [...newTask, { title: text, done: false, id: text, isEdit: false }]);
-        setText("");
-    }
+export default function AddTasks({ onAddBTn, tasks, setText, text }) {
     const handleOnChange = e => {
         setText(e.target.value);
     }
@@ -21,7 +16,7 @@ export default function AddTasks({ setAdd, tasks }) {
     return (
         <>
             <input type="text" value={text} placeholder="Add Tasks" onChange={e => handleOnChange(e)} />
-            <button type="button" onClick={handleAddBtn} disabled={toggle}>Add Tasks</button>
+            <button type="button" onClick={() => onAddBTn(text)} disabled={toggle}>Add Tasks</button>
         </>
     )
 

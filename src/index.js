@@ -1,18 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import AddTasks from './reactDev/createTasks';
-import ListTask from './reactDev/listTasks';
-import { useState } from 'react';
+// import ListTask from './reactDev/listTasks';
+import { useReducer, useState } from 'react';
+import taskReducer from './reactDev/taskWithReducer';
 import './css/style.css';
 
 const initialTasks = [];
 
 export default function App() {
-  const [add, setAdd] = useState(initialTasks);
+  const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
+  const [text, setText] = useState("");
+  const handleAddTasks = text => {
+    dispatch({
+      type: "add",
+      id: text,
+      title: text,
+      done: false
+    })
+    setText("");
+  }
   return (
     <>
-      <AddTasks setAdd={setAdd} tasks={add} />
-      <ListTask tasks={add} setTasks={setAdd} />
+      <AddTasks onAddBTn={handleAddTasks} tasks={tasks} setText={setText} text={text} />
+      {console.log(tasks)}
+      {/* <ListTask tasks={add} setTasks={setAdd} /> */}
     </>
   )
 }
