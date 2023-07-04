@@ -26,10 +26,16 @@ export default function App() {
       task: task
     })
   }
+  const handleDeleted = taskId => {
+    dispatch({
+      type: "deleted",
+      id: taskId
+    })
+  }
   return (
     <>
       <AddTasks onAddBTn={handleAddTasks} tasks={tasks} setText={setText} text={text} />
-      <ListTask tasks={tasks} onChangeTask={handleChanged} />
+      <ListTask tasks={tasks} onChangeTask={handleChanged} onDeleted={handleDeleted} />
       {console.log(tasks)}
     </>
   )
