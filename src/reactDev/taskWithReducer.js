@@ -1,8 +1,8 @@
 export default function taskReducer(tasks, action) {
     switch (action.type) {
         case "add": {
-            return [...tasks, { id: action.id, title: action.title, done: action.done }]
-        };
+            return [...tasks, { id: action.id, title: action.title, done: action.done }];
+        }
         case "changed": {
             return tasks.map(t => {
                 if (t.id === action.task.id) {
@@ -11,8 +11,8 @@ export default function taskReducer(tasks, action) {
                 } else {
                     return t;
                 }
-            })
-        };
+            });
+        }
         default: {
             throw Error("unknown Action");
         }

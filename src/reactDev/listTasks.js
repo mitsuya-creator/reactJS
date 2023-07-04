@@ -6,31 +6,35 @@ export default function ListTask({ tasks, onChangeTask }) {
         <>
             <ul>
                 {tasks.map(task => <li key={task.id}>
-                    <Task task={task} onChangeTask={onChangeTask} />
+                    <Task list={task} onChangeTask={onChangeTask} />
                 </li>)}
             </ul>
         </>
     )
 }
 
-function Task({ task, onChangeTask }) {
+function Task({ list, onChangeTask }) {
     const [isEdit, setIsEdit] = useState(false);
     let taskContent;
     if (isEdit) {
-        taskContent = <>
-            <input type="text" onChange={e => onChangeTask({ ...task, title: e.target.value })} />
-            <button type="button" onClick={setIsEdit(!isEdit)} >Save</button>
-        </>
+        taskContent = (
+            <>
+                <input type="text" value={list.title} onChange={e => onChangeTask({ ...list, title: e.target.value })} />
+                <button type="button" onClick={() => setIsEdit(false)} >Save</button>
+            </>
+        )
     } else {
-        taskContent = <>
-            {task.title}
-            <button type="button" onClick={setIsEdit(true)}>Edit</button>
-        </>
+        taskContent = (
+            <>
+                {list.title}
+                <button type="button" onClick={() => setIsEdit(true)}>Edit</button>
+            </>
+        )
     }
     return (
         <>
             <label>
-                <input type="checkbox" checked={task.done} onChange={e => onChangeTask({ ...task, done: e.target.checked })} />
+                <input type="checkbox" checked={list.done} onChange={e => onChangeTask({ ...list, done: e.target.checked })} />
                 {taskContent}
                 <button type="button" >Delete</button>
             </label>
