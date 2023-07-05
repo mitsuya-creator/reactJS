@@ -18,6 +18,8 @@ export default function App() {
     tasks.map(t => newArr.push(t.title));
     if (newArr.includes(text)) {
       alert("Task Already Exist");
+    } else if (text === "") {
+      alert("title must not Empty!");
     } else {
       dispatch({
         type: "add",
