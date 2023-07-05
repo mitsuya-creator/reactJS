@@ -6,7 +6,6 @@ export default function taskReducer(tasks, action) {
         case "changed": {
             return tasks.map(t => {
                 if (t.id === action.task.id) {
-                    console.log("change")
                     return action.task;
                 } else {
                     return t;

@@ -7,18 +7,26 @@ import taskReducer from './reactDev/taskWithReducer';
 import './css/style.css';
 
 const initialTasks = [];
+let keyID = 0;
 
 export default function App() {
   const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
   const [text, setText] = useState("");
+  const [addTodo, setAddTodo] = useState(false);
   const handleAddTasks = text => {
-    dispatch({
-      type: "add",
-      id: text,
-      title: text,
-      done: false
-    })
-    setText("");
+    let newArr = [];
+    tasks.map(t => newArr.push(t.title));
+    if (newArr.includes(text)) {
+      alert("Task Already Exist");
+    } else {
+      dispatch({
+        type: "add",
+        title: text,
+        done: false,
+        id: keyID++
+      })
+      setText("");
+    }
   }
   const handleChanged = task => {
     dispatch({
@@ -34,7 +42,10 @@ export default function App() {
   }
   return (
     <>
-      <AddTasks onAddBTn={handleAddTasks} tasks={tasks} setText={setText} text={text} />
+      <h1>TodoList App</h1>
+      {
+        addTodo ? <AddTasks onAddBTn={handleAddTasks} setText={setText} text={text} setAddTodo={setAddTodo} /> : <button type='button' onClick={() => setAddTodo(true)}>Create TodoList</button>
+      }
       <ListTask tasks={tasks} onChangeTask={handleChanged} onDeleted={handleDeleted} />
       {console.log(tasks)}
     </>
