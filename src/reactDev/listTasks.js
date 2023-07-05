@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export default function ListTask({ tasks, onChangeTask, onDeleted }) {
     return (
         <>
+            {tasks.length > 0 ? <span>You have {tasks.length} tasks to Complete!</span> : null}
             <ul>
                 {tasks.map(task => <li key={task.id}>
                     <Task list={task} onChangeTask={onChangeTask} onDeleted={onDeleted} />
