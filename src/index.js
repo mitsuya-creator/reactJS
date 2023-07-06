@@ -19,6 +19,13 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
+
+  tasks.map(task => {
+    console.log("stringify", JSON.stringify(task))
+    let str = JSON.stringify(task);
+    localStorage.setItem(task.title, str);
+  });
+
   let result;
   if (searchTodo) {
     result = filterTasks(tasks, keyword);
