@@ -5,6 +5,7 @@ import ListTask from './reactDev/listTasks';
 import { useReducer, useState } from 'react';
 import taskReducer from './reactDev/taskWithReducer';
 import SearchTask from './reactDev/searchTasks';
+import filterTasks from './reactDev/filterTasks';
 import './css/style.css';
 
 
@@ -16,6 +17,16 @@ export default function App() {
   const [text, setText] = useState("");
   const [addTodo, setAddTodo] = useState(false);
   const [searchTodo, setSearchTodo] = useState(false);
+  const [keyword, setKeyword] = useState("");
+
+  let result;
+  if (searchTodo) {
+    result = filterTasks(tasks, keyword);
+  } else {
+    result = tasks;
+  }
+  console.log(result);
+
   const handleAddTasks = text => {
     let newArr = [];
     tasks.map(t => newArr.push(t.title));
@@ -56,12 +67,12 @@ export default function App() {
 
       }
       {
-        searchTodo ? <SearchTask setSearchTodo={setSearchTodo} /> : <button type="button" onClick={() => {
+        searchTodo ? <SearchTask setSearchTodo={setSearchTodo} setKeyword={setKeyword} /> : <button type="button" onClick={() => {
           setSearchTodo(true)
           setAddTodo(false)
         }}>Search Tasks</button>
       }
-      <ListTask tasks={tasks} onChangeTask={handleChanged} onDeleted={handleDeleted} />
+      <ListTask tasks={result} onChangeTask={handleChanged} onDeleted={handleDeleted} allTasks={tasks} />
       {console.log(tasks)}
     </>
   )
