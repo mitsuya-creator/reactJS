@@ -1,13 +1,15 @@
 import React from "react";
 
-export default function AddTasks({ onAddBTn, setText, text, setAddTodo }) {
+export default function AddTasks({ onAddBTn, setText, text }) {
     const handleOnChange = e => {
         setText(e.target.value);
     }
     return (
         <>
             <input type="text" value={text} placeholder="Add Tasks" onChange={e => handleOnChange(e)} />
-            <button type="button" onClick={() => onAddBTn(text)} disabled={text === ""}>Add Tasks</button>
+            <button type="button" onClick={() => {
+                onAddBTn(text)
+            }} disabled={text === ""}>Add Tasks</button>
         </>
     )
 

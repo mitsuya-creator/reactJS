@@ -60,9 +60,10 @@ export default function App() {
     <>
       <h1>TodoList App</h1>
       {
-        addTodo ? <AddTasks onAddBTn={handleAddTasks} setText={setText} text={text} setAddTodo={setAddTodo} /> : <button type="button" onClick={() => {
+        addTodo ? <AddTasks onAddBTn={handleAddTasks} setText={setText} text={text} /> : <button type="button" onClick={() => {
           setAddTodo(true)
           setSearchTodo(false)
+          setKeyword("")
         }}>Create Tasks</button>
 
       }
@@ -70,6 +71,7 @@ export default function App() {
         searchTodo ? <SearchTask setSearchTodo={setSearchTodo} setKeyword={setKeyword} /> : <button type="button" onClick={() => {
           setSearchTodo(true)
           setAddTodo(false)
+          setText("")
         }}>Search Tasks</button>
       }
       <ListTask tasks={result} onChangeTask={handleChanged} onDeleted={handleDeleted} allTasks={tasks} />
