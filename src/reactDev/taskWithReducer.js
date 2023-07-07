@@ -13,7 +13,7 @@ export default function taskReducer(tasks, action) {
             });
         }
         case "deleted": {
-            return tasks.filter(t => t.id === action.id && localStorage.removeItem(t.title))
+            return tasks.filter(t => t.id !== action.id)
         }
 
         default: {

@@ -19,7 +19,7 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
-  if (tasks.length > 0) tasks.map(task => localStorage.setItem(task.title, JSON.stringify(task)))
+  if (tasks.length > 0) tasks.map(task => localStorage.setItem(task.id, JSON.stringify(task)))
 
   let result;
   if (searchTodo) {
@@ -57,6 +57,7 @@ export default function App() {
       type: "deleted",
       id: taskId
     })
+    localStorage.removeItem(taskId)
   }
   return (
     <>
