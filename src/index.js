@@ -51,6 +51,7 @@ export default function App() {
       type: "changed",
       task: task
     })
+    localStorage.setItem(task.id, task)
   }
   const handleDeleted = taskId => {
     dispatch({
