@@ -19,12 +19,7 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
-
-  tasks.map(task => {
-    console.log("stringify", JSON.stringify(task))
-    let str = JSON.stringify(task);
-    localStorage.setItem(task.title, str);
-  });
+  if (tasks.length > 0) tasks.map(task => localStorage.setItem(task.title, JSON.stringify(task)))
 
   let result;
   if (searchTodo) {

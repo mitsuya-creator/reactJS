@@ -13,8 +13,9 @@ export default function taskReducer(tasks, action) {
             });
         }
         case "deleted": {
-            return tasks.filter(t => t.id !== action.id)
+            return tasks.filter(t => t.id === action.id && localStorage.removeItem(t.title))
         }
+
         default: {
             throw Error("unknown Action");
         }
