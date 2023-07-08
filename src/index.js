@@ -6,6 +6,7 @@ import { useReducer, useState } from 'react';
 import taskReducer from './reactDev/taskWithReducer';
 import SearchTask from './reactDev/searchTasks';
 import filterTasks from './reactDev/filterTasks';
+import iconSearch from '../src/assets/search.svg';
 import './css/style.css';
 
 let keyID = 0;
@@ -17,6 +18,7 @@ for (key in localStorage) {
     keyID = localStorage.getItem("keyID");
   }
 }
+
 
 export default function App() {
   const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
@@ -77,6 +79,11 @@ export default function App() {
   return (
     <>
       <h1>TodoList App</h1>
+      <label for="language">Bahasa</label>
+      <select name="language" id="language">
+        <option>English</option>
+        <option>Indonesia</option>
+      </select>
       {
         addTodo ? <AddTasks onAddBTn={handleAddTasks} setText={setText} text={text} /> : <button type="button" onClick={() => {
           setAddTodo(true)
@@ -90,7 +97,7 @@ export default function App() {
           setSearchTodo(true)
           setAddTodo(false)
           setText("")
-        }}>Search Tasks</button>
+        }}><img src={iconSearch} alt='search-icon' /></button>
       }
       <ListTask tasks={result} onChangeTask={handleChanged} onDeleted={handleDeleted} allTasks={tasks} />
       {console.log(tasks)}
