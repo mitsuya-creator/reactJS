@@ -9,8 +9,19 @@ import filterTasks from './reactDev/filterTasks';
 import './css/style.css';
 
 
-const initialTasks = [];
+let initialTasks = [];
 let keyID = 0;
+for (let key in localStorage) {
+  // console.log(key);
+  if (key === "tasks!") {
+    initialTasks = localStorage.getItem("tasks!");
+    initialTasks = JSON.parse(initialTasks);
+    keyID = localStorage.getItem("keyID");
+  }
+}
+
+
+
 
 export default function App() {
   const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
@@ -19,7 +30,10 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
-  if (tasks.length > 0) tasks.map(task => localStorage.setItem(task.id, JSON.stringify(task)))
+  if (tasks.length > 0) {
+    localStorage.setItem("keyID", keyID)
+    localStorage.setItem("tasks!", JSON.stringify(tasks))
+  }
 
   let result;
   if (searchTodo) {
