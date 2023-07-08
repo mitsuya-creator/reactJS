@@ -8,12 +8,12 @@ import SearchTask from './reactDev/searchTasks';
 import filterTasks from './reactDev/filterTasks';
 import './css/style.css';
 
-let initialTasks = [];
 let keyID = 0;
-for (let key in localStorage) {
+let key, initialTasks;
+initialTasks = [];
+for (key in localStorage) {
   if (key === "tasks!") {
-    initialTasks = localStorage.getItem("tasks!");
-    initialTasks = JSON.parse(initialTasks);
+    initialTasks = JSON.parse(localStorage.getItem("tasks!"));
     keyID = localStorage.getItem("keyID");
   }
 }
