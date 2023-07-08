@@ -8,20 +8,15 @@ import SearchTask from './reactDev/searchTasks';
 import filterTasks from './reactDev/filterTasks';
 import './css/style.css';
 
-
 let initialTasks = [];
 let keyID = 0;
 for (let key in localStorage) {
-  // console.log(key);
   if (key === "tasks!") {
     initialTasks = localStorage.getItem("tasks!");
     initialTasks = JSON.parse(initialTasks);
     keyID = localStorage.getItem("keyID");
   }
 }
-
-
-
 
 export default function App() {
   const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
@@ -60,6 +55,7 @@ export default function App() {
       setText("");
     }
   }
+
   const handleChanged = task => {
     dispatch({
       type: "changed",
@@ -67,6 +63,7 @@ export default function App() {
     })
     localStorage.setItem(task.id, task)
   }
+
   const handleDeleted = taskId => {
     dispatch({
       type: "deleted",
@@ -74,6 +71,7 @@ export default function App() {
     })
     localStorage.removeItem(taskId)
   }
+
   return (
     <>
       <h1>TodoList App</h1>
