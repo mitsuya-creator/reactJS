@@ -25,11 +25,6 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
-  if (tasks.length > 0) {
-    localStorage.setItem("keyID", keyID)
-    localStorage.setItem("tasks!", JSON.stringify(tasks))
-  }
-
   let result;
   if (searchTodo) {
     result = filterTasks(tasks, keyword);
@@ -61,7 +56,6 @@ export default function App() {
       type: "changed",
       task: task
     })
-    localStorage.setItem(task.id, task)
   }
 
   const handleDeleted = taskId => {
@@ -69,7 +63,15 @@ export default function App() {
       type: "deleted",
       id: taskId
     })
-    localStorage.removeItem(taskId)
+  }
+
+  if (tasks.length > 0) {
+    localStorage.setItem("keyID", keyID)
+    localStorage.setItem("tasks!", JSON.stringify(tasks))
+  } else {
+    keyID = 0;
+    localStorage.removeItem("tasks!")
+    localStorage.removeItem("keyID")
   }
 
   return (
