@@ -38,7 +38,16 @@ export default function App() {
     let newArr = [];
     tasks.map(t => newArr.push(t.title));
     if (newArr.includes(text)) {
-      alert("Task Already Exist");
+      let ask = window.confirm(`"${text}" already Exist, Create Again ?`)
+      if (ask) {
+        dispatch({
+          type: "add",
+          title: text,
+          done: false,
+          id: keyID++
+        })
+        setText("");
+      }
     } else if (text === "") {
       alert("title must not Empty!");
     } else {
