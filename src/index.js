@@ -26,7 +26,7 @@ export default function App() {
   const [searchTodo, setSearchTodo] = useState(false);
   const [keyword, setKeyword] = useState("");
 
-  let result;
+  let result, ask;
   if (searchTodo) {
     result = filterTasks(tasks, keyword);
   } else {
@@ -38,7 +38,7 @@ export default function App() {
     let newArr = [];
     tasks.map(t => newArr.push(t.title));
     if (newArr.includes(text)) {
-      let ask = window.confirm(`"${text}" already Exist, Create Again ?`)
+      ask = window.confirm(`"${text}" already Exist, Create Again ?`)
       if (ask) {
         dispatch({
           type: "add",
@@ -68,11 +68,14 @@ export default function App() {
     })
   }
 
-  const handleDeleted = taskId => {
-    dispatch({
-      type: "deleted",
-      id: taskId
-    })
+  const handleDeleted = (taskId, text) => {
+    ask = window.confirm(`are you sure want to delete "${text}" ?`);
+    if (ask) {
+      dispatch({
+        type: "deleted",
+        id: taskId
+      })
+    }
   }
 
   if (tasks.length > 0) {
