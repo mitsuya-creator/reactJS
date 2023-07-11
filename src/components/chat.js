@@ -1,11 +1,16 @@
 import React from "react";
 
-export default function TextField() {
+export default function TextField({ contact, messages, textMessage }) {
     return (
         <>
             <section>
-                <textarea />
-                <button type="button">send to xxxx</button>
+                <textarea
+                    value={messages}
+                    placeholder={"chat to " + contact.name}
+                    onChange={e => textMessage(e)}
+                />
+                <br />
+                <button type="button">send to {contact.email}</button>
             </section>
         </>
     )
