@@ -6,26 +6,20 @@ import { messengerReducer, initialState } from "../utils/messengerReducer";
 
 export default function App() {
     const [state, dispatch] = useReducer(messengerReducer, initialState);
-    const message = state.messages;
     const contact = contacts.find(c => c.id === state.selectedId)
+    const message = state.message;
     console.log(contact)
+    console.log(message)
     const handleReceiver = selectedId => {
         dispatch({
             type: "selectedReceiver",
-            selectedId: selectedId
+            contactId: selectedId
         })
-    }
-    const handleTextMessage = e => {
-        dispatch({
-            type: "edited_messages",
-            message: e.target.value
-        })
-        console.log(e.target.value)
     }
     return (
         <>
             <ContactsList ContactsList={contacts} selectedId={state.selectedId} handleReceiver={handleReceiver} />
-            <TextField contact={contact} messages={message} textMessage={handleTextMessage} key={contact.id} />
+            <TextField contact={contact} message={message} textMessage={dispatch} key={contact.id} />
         </>
     )
 }
