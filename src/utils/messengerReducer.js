@@ -4,13 +4,24 @@ export function messengerReducer(state, action) {
             return {
                 ...state,
                 selectedId: action.contactId,
-                message: ""
             }
         }
         case "edited_messages": {
             return {
                 ...state,
-                message: action.message
+                messages: {
+                    ...state.messages,
+                    [state.selectedId]: action.message
+                }
+            }
+        }
+        case "sending_messages": {
+            return {
+                ...state,
+                messages: {
+                    ...state.messages,
+                    [state.selectedId]: action.message
+                }
             }
         }
         default: {
@@ -20,5 +31,5 @@ export function messengerReducer(state, action) {
 }
 export const initialState = {
     selectedId: 0,
-    message: "Hello"
+    messages: {}
 }
