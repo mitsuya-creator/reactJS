@@ -13,7 +13,13 @@ export default function TextField({ contact, message, textMessage }) {
                     })}
                 />
                 <br />
-                <button type="button">send to {contact.email}</button>
+                <button type="button" onClick={() => {
+                    alert(`sending "${message}" to ${contact.email}`);
+                    textMessage({
+                        type: "edited_messages",
+                        message: ''
+                    })
+                }}>send to {contact.email}</button>
             </section>
         </>
     )
