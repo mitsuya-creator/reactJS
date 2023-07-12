@@ -1,14 +1,15 @@
 import React from "react";
 import { mhs } from "../utils/data";
-import { imageSize } from "../utils/context";
+import ListName from "./listName";
+import ListImage from "./listImg"
 
 export function ListImages() {
     return (
         <>
             <ul>
                 {mhs.map(m => <li key={m.id}>
-                    <span>{m.name}</span>
-                    <img src={m.imgUrl} width={imageSize} height={imageSize} alt={m.name} />
+                    <ListName mhs={m} />
+                    <ListImage mhs={m} />
                 </li>)}
             </ul>
         </>

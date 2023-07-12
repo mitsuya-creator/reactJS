@@ -1,9 +1,12 @@
-import { Reac, useContext } from "react";
+import React from "react";
+import { useContext } from "react";
+import { imageSizeContext } from "../utils/context"
 
 export default function ListImage({ mhs }) {
+    const imgSize = useContext(imageSizeContext)
     return (
         <>
-            <img src={mhs.imgUrl} width={100} height={100} alt={mhs.name} />
+            <img src={mhs.imgUrl} width={imgSize} height={imgSize} alt={mhs.name} />
         </>
     )
 }
